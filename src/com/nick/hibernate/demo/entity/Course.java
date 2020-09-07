@@ -52,7 +52,7 @@ public class Course {
 	}
 	
 	public void addReview(Review review) {
-		if(review == null) {
+		if(this.reviews == null) {
 			this.reviews = new ArrayList<>();
 		}		
 		this.reviews.add(review);
