@@ -29,14 +29,34 @@ public class CreateCoursesAndReviewsDemo {
 
 			session.beginTransaction();
 
-			Course c = new Course("PackMan");
+			Instructor ins = new Instructor("chad", "darby", "chad@mail.com");
+
+			InstructorDetail insDet = new InstructorDetail("youtube/luv2code.com", "coding");
+
+			ins.setInstructorDetial(insDet);
+
+			Course c1 = new Course("PackMan");
+
+			c1.addReview(new Review("Good"));
+			c1.addReview(new Review("Woow"));
+			c1.addReview(new Review("Bad bad game"));
+
+			ins.addCOurse(c1);
+
+			Course c2 = new Course("Java");
+
+			c2.addReview(new Review("Fabulous"));
+			c2.addReview(new Review("Not so goood"));
+			c2.addReview(new Review("Cooooool"));
+
+			ins.addCOurse(c2);
+
+			session.save(ins);
 			
-			c.addReview(new Review("Good"));
-			c.addReview(new Review("Woow"));
-			c.addReview(new Review("Bad bad game"));
+			session.save(c1);
 			
-			session.save(c);
-			
+			session.save(c2);
+
 			session.getTransaction().commit();
 
 		} catch (Exception e) {
